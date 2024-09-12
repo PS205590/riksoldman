@@ -50,7 +50,7 @@ export default function Home() {
           <p>Combat level: {playerData.combatLevel}</p>
           <p>Total experience: {playerData.exp}</p>
           <p>Efficient hours played: {playerData.ehp}</p>
-          <p>Efficient hours bosses: {playerData.ehb}</p>
+          <p>Efficient hours bossed: {playerData.ehb}</p>
         </div>
       )}
     </div>

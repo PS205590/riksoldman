@@ -51,6 +51,7 @@ export default function Home() {
           <p>Total experience: {playerData.exp}</p>
           <p>Efficient hours played: {playerData.ehp}</p>
           <p>Efficient hours bossed: {playerData.ehb}</p>
+          <p>Status: {playerData.status}</p>
         </div>
       )}
     </div>

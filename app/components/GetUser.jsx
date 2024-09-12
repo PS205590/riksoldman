@@ -48,32 +48,32 @@ export default function Home() {
         <div className="bg-black-700 p-4">
           <div className="flex flex-wrap gap-4 justify-center font-bold">
             <div>
-              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+              <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
                 Username: {playerData.displayName}
               </p>
             </div>
             <div>
-              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+              <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
                 Account type: {playerData.type}
               </p>
             </div>
             <div>
-              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+              <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
                 Combat level: {playerData.combatLevel}
               </p>
             </div>
             <div>
-              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+              <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
                 Total experience: {playerData.exp}
               </p>
             </div>
             <div>
-              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+              <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
                 Efficient hours played: {playerData.ehp}
               </p>
             </div>
             <div>
-              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+              <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
                 Efficient hours bossed: {playerData.ehb}
               </p>
             </div>

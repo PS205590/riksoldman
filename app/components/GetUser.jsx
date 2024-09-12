@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function Home() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const [playerData, setPlayerData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -12,11 +12,13 @@ export default function Home() {
     setError(null);
 
     try {
-      const res = await fetch(`https://api.wiseoldman.net/v2/players/${username}`);
+      const res = await fetch(
+        `https://api.wiseoldman.net/v2/players/${username}`
+      );
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || 'User not active and/or not found.');
+        throw new Error(data.error || "User not active and/or not found.");
       }
 
       setPlayerData(data);
@@ -40,17 +42,42 @@ export default function Home() {
         <button type="submit">Search</button>
       </form>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       {playerData && (
-        <div>
-          <h2>Player Information:</h2>
-          <p>Username: {playerData.displayName}</p>
-          <p>Account type: {playerData.type}</p>
-          <p>Combat level: {playerData.combatLevel}</p>
-          <p>Total experience: {playerData.exp}</p>
-          <p>Efficient hours played: {playerData.ehp}</p>
-          <p>Efficient hours bossed: {playerData.ehb}</p>
+        <div className="bg-black-700 p-4">
+          <div className="flex flex-wrap gap-4 justify-center font-bold">
+            <div>
+              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+                Username: {playerData.displayName}
+              </p>
+            </div>
+            <div>
+              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+                Account type: {playerData.type}
+              </p>
+            </div>
+            <div>
+              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+                Combat level: {playerData.combatLevel}
+              </p>
+            </div>
+            <div>
+              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+                Total experience: {playerData.exp}
+              </p>
+            </div>
+            <div>
+              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+                Efficient hours played: {playerData.ehp}
+              </p>
+            </div>
+            <div>
+              <p className="rounded-full bg-gray-400 p-3 shadow-md">
+                Efficient hours bossed: {playerData.ehb}
+              </p>
+            </div>
+          </div>
         </div>
       )}
     </div>

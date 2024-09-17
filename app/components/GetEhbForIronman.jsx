@@ -53,7 +53,7 @@ export default function GroupList() {
           <ul>
             {ehb.map((ehbs) => (
               <li key={ehbs.id} className="rounded-2xl bg-gray-400 p-3 shadow-md mb-2">
-                <img src="images/metrics/{ehbs.boss}" alt="Description of image"></img>
+                <img src="public/images/404_troll.png" />
                 <p>{formatBossName(ehbs.boss)}</p>
                 <p>{ehbs.rate} kills per hour</p>
               </li>

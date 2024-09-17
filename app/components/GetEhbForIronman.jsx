@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function GroupList() {
   const [ehb, setEhb] = useState([]);
@@ -55,9 +56,11 @@ export default function GroupList() {
                 key={ehbs.id}
                 className="rounded-2xl bg-gray-400 p-3 shadow-md mb-2"
               >
-                <img
-                  src="public/images/metrics/abyssal_hydra.png"
-                  alt="AH"
+                <Image
+                  height={16}
+                  width={16}
+                  alt={'test'}
+                  src={`/img/metrics/abyssal_hydra.png`}
                 />
                 <p>{formatBossName(ehbs.boss)}</p>
                 <p>{ehbs.rate} kills per hour</p>

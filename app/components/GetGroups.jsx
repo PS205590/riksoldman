@@ -14,7 +14,7 @@ export default function GroupList() {
         const data = await res.json();
 
         if (!res.ok) {
-          throw new Error(data.error || "Error fetching group data.");skjdfhlksdhjfdsf
+          throw new Error(data.error || "Error fetching group data.");
         }
 
         setGroups(data);

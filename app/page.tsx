@@ -1,10 +1,11 @@
 import GetUser from "./components/GetUser";
-import GetGroups from "./components/GetGroups";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div>
+      <Link href="/groups">Go to Groups</Link>
       <GetUser />
-      <GetGroups />
     </div>
   );
 }

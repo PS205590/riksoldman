@@ -46,7 +46,7 @@ export default function GroupList() {
         {ehp.length > 0 ? (
           <ul>
             {ehp.map((ehps) => (
-              <li key={ehps.skill} className="rounded bg-red-500 m-4 p-3">
+              <li key={ehps.skill} className="rounded bg-gray-800 m-4 p-3">
                 <p><strong>{capitalizedName(ehps.skill)}</strong></p> {/* Pass skill as string */}
                 {ehps.methods && ehps.methods.length > 0 ? (
                   <ul>

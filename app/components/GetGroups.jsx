@@ -35,13 +35,13 @@ export default function GroupList() {
   return (
     <div>
       <h2>Groups List</h2>
-      <div className="bg-black-700 p-4">
+      <div className="bg-black-800 p-4">
         {groups.length > 0 ? (
           <ul>
             {groups.map((group) => (
-              <li key={group.id} className="rounded-2xl bg-gray-400 p-3 shadow-md mb-2">
-                <p>Name: {group.name}</p>
-                <p>Description: {group.description}</p>
+              <li key={group.id} className="rounded-2xl bg-gray-800 p-3 shadow-md mb-2">
+                <p>{group.name}</p>
+                <p>{group.description}</p>
               </li>
             ))}
           </ul>

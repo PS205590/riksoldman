@@ -46,6 +46,7 @@ const Navbar = () => {
         <div className="text-white text-xl font-bold">
             <Link href="/ehp">Ehp</Link>
         </div>
+        
         <form onSubmit={handleSubmit} className="flex space-x-2">
           <input
             type="text"

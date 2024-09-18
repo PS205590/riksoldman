@@ -41,7 +41,6 @@ export default function GroupList() {
 
   return (
     <div>
-      <h2>Ehp rates</h2>
       <div className="bg-black-700 p-4">
         {ehp.length > 0 ? (
           <ul>

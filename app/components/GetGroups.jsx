@@ -34,7 +34,6 @@ export default function GroupList() {
 
   return (
     <div>
-      <h2>Groups List</h2>
       <div className="bg-black-800 p-4">
         {groups.length > 0 ? (
           <ul>

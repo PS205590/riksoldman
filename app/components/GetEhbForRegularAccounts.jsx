@@ -47,12 +47,11 @@ export default function GroupList() {
 
   return (
     <div>
-      <h2>Efficient Hours Bossed for Regular accounts</h2>
       <div className="bg-black-700 p-4">
         {ehb.length > 0 ? (
           <ul>
             {ehb.map((ehbs) => (
-              <li key={ehbs.id} className="rounded-2xl bg-gray-400 p-3 shadow-md mb-2">
+              <li key={ehbs.id} className="rounded-2xl bg-gray-800 p-3 shadow-md mb-2">
                 <p>{formatBossName(ehbs.boss)}</p> {/* Format the boss name here */}
                 <p>{ehbs.rate} kills per hour</p>
               </li>

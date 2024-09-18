@@ -47,21 +47,21 @@ export default function GroupList() {
 
   return (
     <div>
-      <h2>Efficient Hours Bossed for Ironman</h2>
       <div className="bg-black-700 p-4">
         {ehb.length > 0 ? (
           <ul>
             {ehb.map((ehbs) => (
               <li
                 key={ehbs.id}
-                className="rounded-2xl bg-gray-400 p-3 shadow-md mb-2"
+                className="rounded-2xl bg-gray-800 p-3 shadow-md mb-2"
               >
                 <Image
-                  height={16}
-                  width={16}
+                  height={25}
+                  width={25}
                   alt={'test'}
-                  src={`/img/metrics/abyssal_hydra.png`}
+                  src={`/img/metrics/${ehbs.boss}.png`}
                 />
+                {/* <img src="/img/metrics/abyssal_sire.png" /> */}
                 <p>{formatBossName(ehbs.boss)}</p>
                 <p>{ehbs.rate} kills per hour</p>
               </li>

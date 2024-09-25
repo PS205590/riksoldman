@@ -33,7 +33,7 @@ const PlayerPage = async ({ params }: { params: { username: string } }) => {
               <Image
                 height={16}
                 width={16}
-                alt={"test"}
+                alt={"This displays the player type/status."}
                 src={`/img/player_types/${playerData.type}.png`}
               />
           </div>

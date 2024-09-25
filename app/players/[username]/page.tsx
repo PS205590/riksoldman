@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const PlayerPage = async ({ params }: { params: { username: string } }) => {
   const { username } = params;
 
@@ -13,6 +15,10 @@ const PlayerPage = async ({ params }: { params: { username: string } }) => {
 
   const playerData = await res.json();
 
+  const formattedEhb = playerData.ehb.toFixed(2);
+  const formattedEhp = playerData.ehp.toFixed(2);
+  const formattedExperience = playerData.exp.toLocaleString("en");
+
   return (
     <div>
       {/* Player Data */}
@@ -20,13 +26,16 @@ const PlayerPage = async ({ params }: { params: { username: string } }) => {
         <div className="flex flex-wrap gap-4 justify-left font-bold text-white">
           <div>
             <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
-              Username: {playerData.displayName}
+              {playerData.displayName}
             </p>
           </div>
-          <div>
-            <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
-              Account type: {playerData.type}
-            </p>
+          <div className="rounded-2xl bg-gray-400 p-3 shadow-md">
+              <Image
+                height={16}
+                width={16}
+                alt={"test"}
+                src={`/img/player_types/${playerData.type}.png`}
+              />
           </div>
           <div>
             <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
@@ -35,17 +44,17 @@ const PlayerPage = async ({ params }: { params: { username: string } }) => {
           </div>
           <div>
             <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
-              Total experience: {playerData.exp}
+              Total experience: {formattedExperience}
             </p>
           </div>
           <div>
             <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
-              Efficient hours played: {playerData.ehp}
+              Efficient hours played: {formattedEhp}
             </p>
           </div>
           <div>
             <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
-              Efficient hours bossed: {playerData.ehb}
+              Efficient hours bossed: {formattedEhb}
             </p>
           </div>
         </div>

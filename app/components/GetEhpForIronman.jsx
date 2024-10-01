@@ -56,7 +56,7 @@ export default function GroupList() {
                 />
                 <p>
                   <strong>{capitalizedName(ehps.skill)}</strong>
-                </p>{" "}
+                </p>{""}
                 {/* Pass skill as string */}
                 {ehps.methods && ehps.methods.length > 0 ? (
                   <ul>

@@ -9,9 +9,8 @@ export default function GroupList() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 20; // Number of items per page
+  const pageSize = 18; // Number of items per page
 
-  // Calculate the number of total pages based on the number of groups and page size
   const totalPages = Math.ceil(groups.length / pageSize);
 
   useEffect(() => {
@@ -25,7 +24,8 @@ export default function GroupList() {
           throw new Error(data.error || "Error fetching group data.");
         }
 
-        setGroups(data); // Assuming data is the full list of groups
+        console.log(data); // Debug fetched data
+        setGroups(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -37,10 +37,8 @@ export default function GroupList() {
   }, []);
 
   if (loading) return <p>Loading groups...</p>;
-
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
-  // Get the current page's groups to display
   const currentGroups = groups.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
@@ -62,24 +60,28 @@ export default function GroupList() {
     <div>
       <div className="bg-black-800 p-4">
         {currentGroups.length > 0 ? (
-          <ul>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
             {currentGroups.map((group) => (
-              <li
+              <div
                 key={group.id}
-                className="rounded-2xl bg-gray-800 p-3 shadow-md mb-2"
+                className="rounded-2xl bg-gray-800 p-3 shadow-md"
               >
-                {/* <Image
-                src={group.bannerImage}
-                alt="Group Image"
-                width={50}
-                height={50}
-                 /> */}
-
-                <p>{group.name}</p>
-                <p>{group.description}</p>
-              </li>
+                {group.bannerImage ? (
+                  <Image
+                    className="mb-4"
+                    src={group.bannerImage}
+                    alt={`${group.name} Image`}
+                    width={100}
+                    height={100}
+                  />
+                ) : (
+                  <p className="font-bold text-red-600">No picture attached.</p>
+                )}
+                <p className="font-bold text-white">{group.name}</p>
+                <p className="text-gray-400">{group.description}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         ) : (
           <p>No groups found.</p>
         )}

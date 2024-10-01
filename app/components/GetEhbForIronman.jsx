@@ -53,17 +53,24 @@ export default function GroupList() {
             {ehb.map((ehbs) => (
               <li
                 key={ehbs.id}
-                className="rounded-2xl bg-gray-800 p-3 shadow-md mb-2"
+                className="flex items-center justify-between bg-gray-800 p-3 rounded-2xl shadow-md mb-2"
               >
-                <Image
-                  height={25}
-                  width={25}
-                  alt={'test'}
-                  src={`/img/metrics/${ehbs.boss}.png`}
-                />
-                {/* <img src="/img/metrics/abyssal_sire.png" /> */}
-                <p>{formatBossName(ehbs.boss)}</p>
-                <p>{ehbs.rate} kills per hour</p>
+                {/* Left Side: Boss Image and Name */}
+                <div className="flex items-center">
+                  <Image
+                    height={25}
+                    width={25}
+                    alt={"test"}
+                    src={`/img/metrics/${ehbs.boss}.png`}
+                    className="mr-2" // Add margin to the right for spacing
+                  />
+                  <p className="text-white">
+                    <strong>{formatBossName(ehbs.boss)}</strong>
+                  </p>
+                </div>
+
+                {/* Right Side: Kills per hour */}
+                <p className="text-white">{ehbs.rate} kills per hour</p>
               </li>
             ))}
           </ul>

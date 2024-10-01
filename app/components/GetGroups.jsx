@@ -17,7 +17,9 @@ export default function GroupList() {
     const fetchGroups = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`https://api.wiseoldman.net/v2/groups?limit=50`);
+        const res = await fetch(
+          `https://api.wiseoldman.net/v2/groups?limit=50`
+        );
         const data = await res.json();
 
         if (!res.ok) {
@@ -62,24 +64,25 @@ export default function GroupList() {
         {currentGroups.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
             {currentGroups.map((group) => (
-              <div
-                key={group.id}
-                className="rounded-2xl bg-gray-800 p-3"
-              >
-                {group.bannerImage ? (
+              <div key={group.id} className="rounded-2xl bg-gray-800 p-3 flex items-start space-x-4">
+                {group.profileImage ? (
                   <Image
-                    className="mb-4 rounded-full"
-                    src={group.bannerImage}
+                    className="rounded-full"
+                    src={group.profileImage}
                     alt={`${group.name} Image`}
                     width={100}
-                    height={200}
+                    height={100}
                   />
                 ) : (
                   <p className="font-bold text-red-600">No picture attached.</p>
                 )}
-                <p className="font-bold text-white">{group.name}</p>
-                <p className="text-white"><strong>{group.memberCount} members </strong> </p>
-                <p className="text-gray-400">{group.description}</p>
+                <div>
+                  <p className="font-bold text-white">{group.name}</p>
+                  <p className="text-white">
+                    <strong>{group.memberCount} members </strong>
+                  </p>
+                  <p className="text-gray-400 mt-2">{group.description}</p>
+                </div>
               </div>
             ))}
           </div>

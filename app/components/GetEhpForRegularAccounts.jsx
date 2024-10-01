@@ -12,7 +12,7 @@ export default function GroupList() {
     const fetchEhp = async () => {
       try {
         const res = await fetch(
-          "https://api.wiseoldman.net/v2/efficiency/rates?metric=ehp&type=ironman"
+          "https://api.wiseoldman.net/v2/efficiency/rates?metric=ehp&type=main"
         );
         const data = await res.json();
         console.log(data);

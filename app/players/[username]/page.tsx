@@ -24,18 +24,16 @@ const PlayerPage = async ({ params }: { params: { username: string } }) => {
       {/* Player Data */}
       <div className="bg-gray-800 p-4 mt-4 rounded-lg shadow-md">
         <div className="flex flex-wrap gap-4 justify-left font-bold text-white">
-          <div>
-            <p className="rounded-2xl bg-gray-400 p-3 shadow-md">
+          <div className="flex gap-2 rounded-2xl bg-gray-400 p-3 shadow-md">
+            <Image
+              height={16}
+              width={16}
+              alt={"This displays the player type/status."}
+              src={`/img/player_types/${playerData.type}.png`}
+            />
+            <p>
               {playerData.displayName}
             </p>
-          </div>
-          <div className="rounded-2xl bg-gray-400 p-3 shadow-md">
-              <Image
-                height={16}
-                width={16}
-                alt={"This displays the player type/status."}
-                src={`/img/player_types/${playerData.type}.png`}
-              />
           </div>
           <div>
             <p className="rounded-2xl bg-gray-400 p-3 shadow-md">

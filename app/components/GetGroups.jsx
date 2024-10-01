@@ -78,6 +78,7 @@ export default function GroupList() {
                   <p className="font-bold text-red-600">No picture attached.</p>
                 )}
                 <p className="font-bold text-white">{group.name}</p>
+                <p className="text-white"><strong>{group.memberCount} members </strong> </p>
                 <p className="text-gray-400">{group.description}</p>
               </div>
             ))}

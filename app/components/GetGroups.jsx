@@ -60,19 +60,19 @@ export default function GroupList() {
     <div>
       <div className="bg-black-800 p-4">
         {currentGroups.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
             {currentGroups.map((group) => (
               <div
                 key={group.id}
-                className="rounded-2xl bg-gray-800 p-3 shadow-md"
+                className="rounded-2xl bg-gray-800 p-3"
               >
                 {group.bannerImage ? (
                   <Image
-                    className="mb-4"
+                    className="mb-4 rounded-full"
                     src={group.bannerImage}
                     alt={`${group.name} Image`}
                     width={100}
-                    height={100}
+                    height={200}
                   />
                 ) : (
                   <p className="font-bold text-red-600">No picture attached.</p>

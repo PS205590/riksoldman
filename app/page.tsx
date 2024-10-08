@@ -1,9 +1,9 @@
 import Navbar from "./components/Navbar";
 import Link from "next/link";
+import Header from "./components/Header";
 
 export default function Home() {
   return (
-    <div className="bg-gray-800 min-w-full">
-    </div>
+    <Header />
   );
 }

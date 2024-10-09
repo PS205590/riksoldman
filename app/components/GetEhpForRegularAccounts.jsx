@@ -1,8 +1,15 @@
 "use client";
 
-import React from "react"; // Explicit React import
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+
+// Function to format the XP rate (e.g., 1560000 => 1560k)
+const formatRate = (rate) => {
+  if (rate >= 1000) {
+    return `${(rate / 1000)}k`; // Divide by 1000 and round to 1 decimal place
+  }
+  return rate; // Return the rate as it is if less than 1000
+};
 
 export default function GroupList() {
   const [ehp, setEhp] = useState([]);
@@ -84,7 +91,9 @@ export default function GroupList() {
                         <td className="px-6 py-3">
                           {method.startExp || "0"} exp
                         </td>
-                        <td className="px-6 py-3">{method.rate} xp per hour</td>
+                        <td className="px-6 py-3">
+                          {formatRate(method.rate)} xp per hour
+                        </td>
                         <td className="px-6 py-3">{method.description}</td>
                       </tr>
                     ))

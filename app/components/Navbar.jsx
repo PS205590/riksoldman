@@ -55,7 +55,7 @@ const Navbar = () => {
           <form onSubmit={handleSubmit} className="flex space-x-2">
             <input
               type="text"
-              placeholder="Enter username"
+              placeholder="Search user..."
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="text-white px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -86,10 +86,10 @@ const Navbar = () => {
             <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
               <input
                 type="text"
-                placeholder="Enter username"
+                placeholder="Search user..."
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="px-4 py-2 rounded-md border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-4 py-2 rounded-md border text-white border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 required
               />
               <button

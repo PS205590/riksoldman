@@ -67,13 +67,7 @@ export default function GroupList() {
                       Starting exp.
                     </th>
                     <th className="px-6 py-3 text-sm font-medium text-gray-300" style={{ width: '20%' }}>
-                      Ending exp.
-                    </th>
-                    <th className="px-6 py-3 text-sm font-medium text-gray-300" style={{ width: '20%' }}>
                       Rate
-                    </th>
-                    <th className="px-6 py-3 text-sm font-medium text-gray-300" style={{ width: '20%' }}>
-                      Estimated duration
                     </th>
                     <th className="px-6 py-3 text-sm font-medium text-gray-300" style={{ width: '20%' }}>
                       Description
@@ -90,11 +84,7 @@ export default function GroupList() {
                         <td className="px-6 py-3">
                           {method.startExp || "0"} exp
                         </td>
-                        <td className="px-6 py-3">{method.endExp || "N/A"} exp</td>
                         <td className="px-6 py-3">{method.rate} xp per hour</td>
-                        <td className="px-6 py-3">
-                          {method.duration || "N/A"} hours
-                        </td>
                         <td className="px-6 py-3">{method.description}</td>
                       </tr>
                     ))

@@ -122,8 +122,8 @@ const PlayerPage = async ({ params }: { params: { username: string } }) => {
                   <tr key={skillName} className="bg-gray-800 border-b border-gray-700">
                     <td className="px-4 py-2 flex items-center">
                       <Image
-                        height={24}
-                        width={24}
+                        height={16}
+                        width={16}
                         alt={skillName}
                         src={`/img/metrics_small/${skillName}.png`}
                       />

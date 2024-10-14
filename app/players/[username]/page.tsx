@@ -66,6 +66,7 @@ const PlayerPage = async ({ params }: { params: { username: string } }) => {
     <div>
       {/* Player Data */}
       <div className="bg-gray-800 p-4 mt-4 rounded-lg shadow-md">
+      <h2 className="text-white font-bold text-xl mb-2">Quick summary</h2>
         <div className="flex flex-wrap gap-4 justify-left font-bold text-white">
           <div className="flex gap-2 rounded-2xl bg-gray-400 p-3 shadow-md">
             <Image

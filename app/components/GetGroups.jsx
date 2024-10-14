@@ -26,7 +26,6 @@ export default function GroupList() {
           throw new Error(data.error || "Error fetching group data.");
         }
 
-        console.log(data); // Debug fetched data
         setGroups(data);
       } catch (err) {
         setError(err.message);

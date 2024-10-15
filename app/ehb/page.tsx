@@ -1,11 +1,9 @@
-import GetEhbForRegularAccounts from "../components/GetEhbForRegularAccounts";
-import Link from "next/link";
+import GetEhb from "../components/GetEhb";
 
 export default function GetEhbForMains() {
   return (
     <div>
-      <Link href="/ehb/ironman">Go to EHB for ironman</Link>
-      <GetEhbForRegularAccounts />
+      <GetEhb />
     </div>
   );
 }

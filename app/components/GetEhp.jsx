@@ -15,12 +15,17 @@ export default function GroupList() {
   const [ehp, setEhp] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [accountType, setAccountType] = useState("main"); // State to store selected account type
 
+  // Fetch data from the API based on the selected account type
   useEffect(() => {
     const fetchEhp = async () => {
+      setLoading(true); // Start loading
+      setError(null); // Reset error state
+
       try {
         const res = await fetch(
-          "https://api.wiseoldman.net/v2/efficiency/rates?metric=ehp&type=ironman"
+          `https://api.wiseoldman.net/v2/efficiency/rates?metric=ehp&type=${accountType}`
         );
         const data = await res.json();
 
@@ -32,12 +37,12 @@ export default function GroupList() {
       } catch (err) {
         setError(err.message);
       } finally {
-        setLoading(false);
+        setLoading(false); // Stop loading
       }
     };
 
     fetchEhp();
-  }, []);
+  }, [accountType]); // Re-fetch data when accountType changes
 
   if (loading) return <p>Loading ehp...</p>;
 
@@ -50,6 +55,21 @@ export default function GroupList() {
 
   return (
     <div className="p-4">
+      {/* Dropdown to select account type */}
+      <div className="mb-4">
+        <label className="text-white mr-4" htmlFor="accountType">Select account type:</label>
+        <select
+          id="accountType"
+          value={accountType}
+          onChange={(e) => setAccountType(e.target.value)} // Update account type on change
+          className="p-2 bg-gray-700 text-white rounded"
+        >
+          <option value="main">Main</option>
+          <option value="ironman">Ironman</option>
+          {/* Add more options here if needed */}
+        </select>
+      </div>
+
       {ehp.length > 0 ? (
         ehp.map((ehps) => (
           <div key={ehps.skill} className="mb-8">
@@ -66,21 +86,34 @@ export default function GroupList() {
             </div>
 
             {/* Table for each skill */}
-            <table className="min-w-full table-auto text-left bg-gray-800 text-white rounded-lg border border-gray-600 overflow-hidden" style={{ tableLayout: 'fixed' }}>
+            <table
+              className="min-w-full table-auto text-left bg-gray-800 text-white rounded-lg border border-gray-600 overflow-hidden"
+              style={{ tableLayout: "fixed" }}
+            >
               <thead>
                 <tr className="bg-gray-700">
-                  <th className="px-6 py-3 text-sm font-medium text-gray-300" style={{ width: '20%' }}>
+                  <th
+                    className="px-6 py-3 text-sm font-medium text-gray-300"
+                    style={{ width: "20%" }}
+                  >
                     Starting exp.
                   </th>
-                  <th className="px-6 py-3 text-sm font-medium text-gray-300" style={{ width: '20%' }}>
+                  <th
+                    className="px-6 py-3 text-sm font-medium text-gray-300"
+                    style={{ width: "20%" }}
+                  >
                     Rate
                   </th>
-                  <th className="px-6 py-3 text-sm font-medium text-gray-300" style={{ width: '20%' }}>
+                  <th
+                    className="px-6 py-3 text-sm font-medium text-gray-300"
+                    style={{ width: "20%" }}
+                  >
                     Description
                   </th>
                 </tr>
               </thead>
-              <tbody className="overflow-auto" style={{ maxHeight: '400px' }}> {/* Apply fixed height for tbody */}
+              <tbody className="overflow-auto" style={{ maxHeight: "400px" }}>
+                {/* Apply fixed height for tbody */}
                 {ehps.methods && ehps.methods.length > 0 ? (
                   ehps.methods.map((method, index) => (
                     <tr
@@ -98,7 +131,7 @@ export default function GroupList() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5" className="px-4 py-2 text-center">
+                    <td colSpan="3" className="px-4 py-2 text-center">
                       No methods available
                     </td>
                   </tr>

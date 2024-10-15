@@ -61,7 +61,7 @@ export default function GroupList() {
                   <Image
                     height={25}
                     width={25}
-                    alt={"test"}
+                    alt={`${ehbs.boss} name`}
                     src={`/img/metrics/${ehbs.boss}.png`}
                     className="mr-2" // Add margin to the right for spacing
                   />

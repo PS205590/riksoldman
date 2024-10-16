@@ -13,7 +13,7 @@ const Navbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username) {
-      router.push(`/players/${username}`);
+      router.push(`/player/${username}`);
     }
   };
 

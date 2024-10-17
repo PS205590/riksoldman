@@ -66,6 +66,12 @@ export default function GroupList() {
         >
           <option value="main">Main</option>
           <option value="ironman">Ironman</option>
+          <option value="ultimate">Ultimate</option>
+          <option value="lvl3">Level 3</option>
+          <option value="f2p">Free 2 Play</option>
+          <option value="f2p_lvl3">Free 2 Play & Level 3</option>
+          <option value="f2p_ironman">Free 2 Play Ironman</option>
+          <option value="f2p_lvl3_ironman">Free 2 Play & Level 3 Ironman</option>
           {/* Add more options here if needed */}
         </select>
       </div>

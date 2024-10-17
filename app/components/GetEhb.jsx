@@ -63,6 +63,7 @@ export default function GroupList() {
         >
           <option value="main">Main</option>
           <option value="ironman">Ironman</option>
+          <option value="ultimate">Ultimate</option>
           {/* Add more options if needed */}
         </select>
       </div>

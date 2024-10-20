@@ -1,72 +1,98 @@
+'use client';
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const PlayerPage = async ({ params }: { params: { username: string } }) => {
+interface SkillData {
+  metric: string;
+  experience: number;
+  rank: number;
+  level: number;
+  ehp: number;
+}
+
+interface LatestSnapshot {
+  id: number;
+  playerId: number;
+  createdAt: string;
+  importedAt: null | string;
+  data: {
+    skills: Record<string, SkillData>;
+  };
+}
+
+interface PlayerData {
+  id: number;
+  username: string;
+  displayName: string;
+  type: string;
+  build: string;
+  status: string;
+  country: null | string;
+  patron: boolean;
+  exp: number;
+  ehp: number;
+  ehb: number;
+  ttm: number;
+  combatLevel: number;
+  tt200m: number;
+  registeredAt: string;
+  updatedAt: string;
+  lastChangedAt: string;
+  lastImportedAt: null | string;
+  latestSnapshot: LatestSnapshot;
+}
+
+const PlayerPage = ({ params }: { params: { username: string } }) => {
   const { username } = params;
 
-  // Fetch player data from the external API
-  const res = await fetch(`https://api.wiseoldman.net/v2/players/${username}`);
-  if (!res.ok) {
+  const [playerData, setPlayerData] = useState<PlayerData | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPlayerData = async () => {
+      try {
+        const res = await fetch(`https://api.wiseoldman.net/v2/players/${username}`);
+        if (!res.ok) {
+          setError("User not active and/or not found.");
+          return;
+        }
+        const data = await res.json();
+        setPlayerData(data);
+      } catch (error) {
+        setError("Failed to fetch data.");
+      }
+    };
+
+    fetchPlayerData();
+    // Optionally, you could add an interval to refresh the data every few seconds/minutes
+    const intervalId = setInterval(fetchPlayerData, 30000); // Refresh data every 30 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
+  }, [username]); // Refetch if the username changes
+
+  if (error) {
     return (
       <div>
-        <p className="text-red-500 mt-4">User not active and/or not found.</p>
+        <p className="text-red-500 mt-4">{error}</p>
       </div>
     );
   }
 
-  interface SkillData {
-    metric: string;         // Type of the skill, e.g., "attack", "defense"
-    experience: number;     // Total experience in this skill
-    rank: number;           // Rank of the player in this skill
-    level: number;   
-    ehp: number;       // Current level in this skill
+  if (!playerData) {
+    return <p className="text-white mt-4">Loading...</p>;
   }
-  
-  interface LatestSnapshot {
-    id: number;
-    playerId: number;
-    createdAt: string;
-    importedAt: null | string;
-    data: {
-      skills: Record<string, SkillData>; // Using Record to map skill names to SkillData
-    };
-  }
-  
-  interface PlayerData {
-    id: number;
-    username: string;
-    displayName: string;
-    type: string;
-    build: string;
-    status: string;
-    country: null | string;
-    patron: boolean;
-    exp: number;
-    ehp: number;
-    ehb: number;
-    ttm: number;
-    combatLevel: number;
-    tt200m: number;
-    registeredAt: string;
-    updatedAt: string;
-    lastChangedAt: string;
-    lastImportedAt: null | string;
-    latestSnapshot: LatestSnapshot;
-  }
-  
-  const playerData: PlayerData = await res.json(); // Ensure playerData is typed correctly
 
   const formattedEhb = playerData.ehb.toFixed(2);
   const formattedEhp = playerData.ehp.toFixed(2);
   const formattedExperience = playerData.exp.toLocaleString("en");
-
-  // Extract skills from playerData.latestSnapshot.data.skills
   const skills = playerData.latestSnapshot.data.skills;
 
   return (
     <div>
       {/* Player Data */}
       <div className="bg-gray-800 p-4 mt-4 rounded-lg shadow-md">
-      <h2 className="text-white font-bold text-xl mb-2">Quick summary</h2>
+        <h2 className="text-white font-bold text-xl mb-2">Quick summary</h2>
         <div className="flex flex-wrap gap-4 justify-left font-bold text-white">
           <div className="flex gap-2 rounded-2xl bg-gray-400 p-3 shadow-md">
             <Image
@@ -116,7 +142,7 @@ const PlayerPage = async ({ params }: { params: { username: string } }) => {
             </thead>
             <tbody>
               {Object.entries(skills).map(([skillName, skillData]) => {
-                const skill = skillData as SkillData; // Assert skillData type
+                const skill = skillData as SkillData;
 
                 return (
                   <tr key={skillName} className="bg-gray-800 border-b border-gray-700">
